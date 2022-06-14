@@ -44,6 +44,9 @@ public class SuatChieuAPI extends HttpServlet {
 
         Pattern pattern3 = Pattern.compile("phim=(\\d+)&ngay=(\\d{4}-\\d{2}-\\d{2})$");
         Matcher matcher3 = null;
+
+        Pattern pattern4 = Pattern.compile("api/suat-chieu/(\\d++)$");
+        Matcher matcher4 = pattern4.matcher(request.getRequestURL());
         if(request.getQueryString()!= null){
             matcher3 = pattern3.matcher(request.getQueryString());
         }
@@ -71,7 +74,10 @@ public class SuatChieuAPI extends HttpServlet {
             int idPhim = Integer.parseInt(matcher2.group(1));
             out.println(gson.toJson(suatChieuDAO.getSuatChieyByIDPhim(idPhim)));
         }
-
+        else if(matcher4.find()){
+            int idSuatChieu = Integer.parseInt(matcher4.group(1));
+            out.print(gson.toJson(suatChieuDAO.getSuatChieuByID(idSuatChieu)));
+        }
 
 
     }

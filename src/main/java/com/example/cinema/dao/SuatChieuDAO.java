@@ -146,7 +146,7 @@ public class SuatChieuDAO extends AbstractDAO{
         ResultSet rs = null;
         try {
             connection = UserDAO.getConnection();
-            String sql = "select * from suatchieu where ID_PHIM = ? and NGAY_CHIEU = ?";
+            String sql = "select * from suatchieu where ID_PHIM = ? and NGAY_CHIEU = ? order by THOI_GIAN_BD";
             pstm = connection.prepareStatement(sql);
             pstm.setInt(1, idPhim);
             pstm.setString(2, date);

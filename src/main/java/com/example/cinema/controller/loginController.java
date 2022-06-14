@@ -40,7 +40,7 @@ public class loginController extends HttpServlet {
         System.out.println(userName + " " + passWord);
         if(user != null){
             session.setAttribute("user", user);
-            resp.sendRedirect("trang-tru");
+            resp.sendRedirect("test");
         }
         else{
             req.setAttribute("message", "Thông tin tài khoản hoặc mật khẩu không chính xác");

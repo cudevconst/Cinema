@@ -11,9 +11,9 @@ let api = "http://localhost:3000/profile";
 // show data
 function getAllData(callback){
 	fetch(api)
-	.then(function(response){
-		return response.json()
-	}). then(callback)
+		.then(function(response){
+			return response.json()
+		}). then(callback)
 }
 function data(){
 	getAllData(rederData);

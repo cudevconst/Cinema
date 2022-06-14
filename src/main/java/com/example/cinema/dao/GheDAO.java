@@ -14,7 +14,7 @@ public class GheDAO {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            connection = UserDAO.getConnection();
+            connection = AbstractDAO.getConnection();
             String sql = "select * from ghe where ID_GHE = ?";
             pstm = connection.prepareStatement(sql);
             pstm.setInt(1, idGhe);

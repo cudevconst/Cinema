@@ -28,14 +28,10 @@ public class HoaDonAPI extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        Pattern pattern = Pattern.compile("api/hoa-don/(\\d++)$");
-        Matcher matcher = pattern.matcher(request.getRequestURL());
-        if(matcher.find()){
-            out.print(gson.toJson(hoaDonDAO.getHoaDonByIDUser(Integer.parseInt(matcher.group(1)))));
-        }
-        else {
-            out.println(0);
-        }
+        int IdUser = Integer.parseInt(request.getParameter("id-user"));
+        out.print(gson.toJson(hoaDonDAO.getHoaDonByIDUser(IdUser)));
+
+
     }
 
     @Override

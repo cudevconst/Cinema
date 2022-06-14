@@ -1,11 +1,9 @@
 .detail-cinema{
-    width: 80%;
+    width: 60%;
     margin: 100px auto;
 }
-.video-cinema{
-    height: 380px;
-    width: 50%;
-    border: 1px solid red;
+.image-cinema img{
+    border-radius: 15px;
 }
 .title-cinema{
     width: 50%;

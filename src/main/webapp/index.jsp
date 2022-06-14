@@ -59,10 +59,15 @@
 
 
     <c:if test="${sessionScope.user != null}">
-        <a href="thong-tin">
-                ${sessionScope.user.userName}
-        </a>
-        <button id="logout"><a href="logout">Log Out</a></button>
+    <div class="xin-chao">
+        <h3> Xin chào Hưng</h3>
+    </div>
+    <div class="popup-taikhoan">
+        <div class="thong-tin">Thông tin tài khoản</div>
+        <div class="dang-xuat">Đăng xuất</div>
+    </div>
+    </div>
+        <%--        <button id="logout"><a href="logout">Log Out</a></button>--%>
     </c:if>
     <c:if test="${sessionScope.user == null}">
         <a href="login">
@@ -158,6 +163,7 @@
     </div>
 
 </div>
-<script src="static/js/trangchu.js"></script>
+<script src="static/js/app.js"></script>
+<script src="static/js/data.js"></script>
 </body>
 </html>
