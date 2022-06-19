@@ -160,7 +160,6 @@ function menuCinema(){
     cinemaBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             const type = e.target.getAttribute('type-cinema')
-
             // remove and set active fpr button
             document
                 .querySelector('.cinema-menu button.active')
@@ -169,13 +168,16 @@ function menuCinema(){
 
             // filter elements
             cinemaList.forEach((item) => {
-                if (type == 'all' || item.getAttribute('type-cinema') == type)
+
+                if (type == '0' || item.getAttribute('type-cinema') == type)
                     item.classList.remove('hide')
                 else item.classList.add('hide')
             })
         })
     })
 }
+
+
 function moTaiKhoan(){
     document.querySelector(".xin-chao").addEventListener("click",function(){
         document.querySelector(".popup-taikhoan").classList.toggle("show");
@@ -206,6 +208,7 @@ function gioChieuPhim(){
         })
     }
     async function loadLanDau(){
+        console.log("da load vao")
         let arrChuanHoa = chuanHoaNgay();
         let arrNgayChuan = layNgayTheoChuan();
         type = arrChuanHoa[0] // bằng ngày đầu tiên
@@ -234,7 +237,22 @@ function gioChieuPhim(){
     moLichChieu();
     const gioChieuBtn = document.querySelectorAll('.gio-chieu-menu button')
     dongLichChieu();
-    loadLanDau();
+    let muaVePhim = document.querySelectorAll(".muaVe");
+    muaVePhim.forEach(e=>{
+        e.addEventListener("click", function(){
+            console.log("da load lai roi nhe");
+            document
+                .querySelector('.gio-chieu-menu button.active-gio-chieu')
+                .classList.remove('active-gio-chieu')
+            document
+                .querySelector('.ngay-dau')
+                .classList.add('active-gio-chieu')
+            loadLanDau();
+        })
+    })
+
+    // let muaVe = document.querySelectorAll('.muaVe')
+
 
     console.log(gioChieuBtn);
     gioChieuBtn.forEach((btn) => {
@@ -268,15 +286,21 @@ function gioChieuPhim(){
 // hiển thị ra các suất chiếu theo ngày
 function renderSuatChieu(suatchieus){
     let listSuatChieu = document.querySelector(".gio-chieu-list");
-    let htmls = suatchieus.map( function(suatchieu){
-        return `
+    if(!suatchieus){
+        console.log("xu ly loi");
+        document.querySelector(".gio-chieu-list").innerHTML = "";
+    }
+    else{
+        let htmls = suatchieus.map( function(suatchieu){
+            return `
             <a class="btnSuatChieu" href = "mua-ve" style = " color: #000000; text-decoration: none;">
              <div class="gio-chieu hide" type-gio-chieu = "${suatchieu.ngayChieu}" idSuatChieu = "${suatchieu.idSuatChieu}">${suatchieu.thoiGianBD}
              </div>
              </a>
         `
-    })
-    listSuatChieu.innerHTML = htmls.join('')
+        })
+        listSuatChieu.innerHTML = htmls.join('')
+    }
 }
 function handleClickbtnSuatChieu(){
     var btnSuatChieu = document.querySelectorAll('.btnSuatChieu');
@@ -295,7 +319,7 @@ function renderNgayThang(){
     let arrChuanHoaNgay = chuanHoaNgay();
     listNgay.innerHTML = `
         <div  class="closebtn">&times;</div>
-        <button class="active-gio-chieu" type-gio-chieu="${arrChuanHoaNgay[0]}" value = ${arrNgayChuan[0]}>${arrNgay[0]}</button>
+        <button class="active-gio-chieu ngay-dau" type-gio-chieu="${arrChuanHoaNgay[0]}" value = ${arrNgayChuan[0]}>${arrNgay[0]}</button>
         <button type-gio-chieu="${arrChuanHoaNgay[1]}" value = ${arrNgayChuan[1]}>${arrNgay[1]}</button>
         <button type-gio-chieu="${arrChuanHoaNgay[2]}" value = ${arrNgayChuan[2]}>${arrNgay[2]}</button>
         <button type-gio-chieu="${arrChuanHoaNgay[3]}" value = ${arrNgayChuan[3]}>${arrNgay[3]}</button>
@@ -306,16 +330,6 @@ function renderNgayThang(){
 // let son = ["11:00", "15:00", "22:00", "23:55"];
 function rederCinema(cinemas){
     let listCinema = document.querySelector(".cinema-list");
-    // function test(){
-    //     let hung = document.querySelector(".hung");
-    //     console.log(hung);
-    //     let tada = son.map(function (data){
-    //        return  `
-    //             <li>${data}</li>
-    //        `
-    //     })
-    //     hung.innerHTML = tada.join('');
-    // };
     let htmls = cinemas.map( (cinema)=> {
         return `
             <div class="cinema" type-cinema = "${cinema.trangThai}" id = "${cinema.idPhim}" ">
@@ -328,21 +342,22 @@ function rederCinema(cinemas){
                 <p><span>Thể loại: </span>${cinema.loaiPhim}</p>
                 <p><span>Thời lượng: </span>${cinema.thoiLuong} phut</p>
                 <button class = "muaVe" value = ${cinema.idPhim} ><i class="fa-solid fa-ticket"></i> MUA VÉ</button>
-                
-    
-                
             </div>
         `
     })
     listCinema.innerHTML = htmls.join('');
     let checkCinema = document.querySelectorAll(".cinema");
     checkCinema.forEach((btn=>{
+
         btn.addEventListener("click",function(e){
+
             console.log(btn.querySelector(".tenPhim").innerHTML);
             sessionStorage.setItem("tenPhim",btn.querySelector(".tenPhim").innerHTML)
             document.querySelector(".ten-phim").innerHTML = `
             <h1>LỊCH CHIẾU - ${sessionStorage.getItem("tenPhim")}</h1>
             `
+
+
         })
     }))
 

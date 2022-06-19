@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class PhongChieuDAO extends AbstractDAO{
+    private RapDAO rapDAO = new RapDAO();
     public PhongChieu getPhongChieuByID(int id){
         Connection connection = null;
         PreparedStatement pstm = null;
@@ -23,7 +24,7 @@ public class PhongChieuDAO extends AbstractDAO{
                 phongChieu.setIdPhongChieu(rs.getInt("ID_PHONGCHIEU"));
                 phongChieu.setTenPhong(rs.getString("TEN_PHONG"));
                 phongChieu.setSoLuongGhe(rs.getInt("SO_LUONG_GHE"));
-                Rap rap = RapDAO.getRapByID(rs.getInt("ID_RAP"));
+                Rap rap = rapDAO.getRapByID(rs.getInt("ID_RAP"));
                 phongChieu.setRap(rap);
                 return phongChieu;
             }

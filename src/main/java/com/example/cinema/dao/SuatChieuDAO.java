@@ -25,6 +25,7 @@ public class SuatChieuDAO extends AbstractDAO{
             while(rs.next()){
                 SuatChieu suatChieu = new SuatChieu();
                 suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
                 suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
                 suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
                 suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));
@@ -67,6 +68,7 @@ public class SuatChieuDAO extends AbstractDAO{
             while(rs.next()){
                 SuatChieu suatChieu = new SuatChieu();
                 suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
                 suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
                 suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
                 suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));
@@ -110,6 +112,7 @@ public class SuatChieuDAO extends AbstractDAO{
             while(rs.next()){
                 SuatChieu suatChieu = new SuatChieu();
                 suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
                 suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
                 suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
                 suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));
@@ -154,6 +157,7 @@ public class SuatChieuDAO extends AbstractDAO{
             while(rs.next()){
                 SuatChieu suatChieu = new SuatChieu();
                 suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
                 suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
                 suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
                 suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));
@@ -197,6 +201,7 @@ public class SuatChieuDAO extends AbstractDAO{
             while(rs.next()){
                 SuatChieu suatChieu = new SuatChieu();
                 suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
                 suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
                 suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
                 suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));

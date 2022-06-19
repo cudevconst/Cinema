@@ -16,7 +16,7 @@ import java.io.IOException;
  *
  * @author cuong
  */
-@WebServlet(name = "homeController", urlPatterns = {"/trang-tru"})
+@WebServlet(name = "homeController", urlPatterns = {"/trang-chu"})
 public class homeController extends HttpServlet {
 
     @Override
