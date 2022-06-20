@@ -10,20 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  *
  * @author cuong
  */
-@WebServlet(name = "cuongController", urlPatterns = {"/cuong"})
-public class cuongController extends HttpServlet {
+@WebServlet(name = "homeController", urlPatterns = {"/trang-chu"})
+public class TrangChuController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        resp.getWriter().print(session.getAttribute("userID"));
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 
     

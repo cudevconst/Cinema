@@ -452,3 +452,8 @@ html body{
 .show{
     display: block;
 }
+
+#search{
+    color: black;
+
+}

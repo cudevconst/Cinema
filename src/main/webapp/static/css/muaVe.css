@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
 .ghe{
     width: 50px;
     height: 50px;
@@ -69,4 +73,21 @@
 }
 .du-lieu h2{
     font-size: 23px;
+}
+
+.btn-mua-ve{
+    text-align: center;
+    display: none;
+}
+.btn-mua-ve button{
+    width: 228px;
+    height: 38px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #0a64a7 0%, #258dcf 51%, #3db1f3 100%) !important;
+    margin-top: 23px;
+
 }

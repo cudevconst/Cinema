@@ -19,6 +19,7 @@ import java.util.List;
  * @author cuong
  */
 public class PhimDAO {
+
     public List<Phim> findAll(){
         List<Phim> list = new ArrayList<>();
         Connection connection = null;
@@ -126,16 +127,79 @@ public class PhimDAO {
 
     }
     public List<Phim> getPhimByLoai(int loai){
-        List<Phim> list = findAll();
-        List<Phim> listLoai = new ArrayList<>();
-        for(Phim phim : list){
-            if(phim.getTrangThai() == loai){
-                listLoai.add(phim);
+        List<Phim> list = new ArrayList<>();
+//        if(loai == 1){
+//            list = getPhimDangChieuTheoRap(idrap);
+//            return list;
+//        }
+//        else{
+            list = findAll();
+            List<Phim> listLoai = new ArrayList<>();
+            for(Phim phim : list){
+                if(phim.getTrangThai() == loai){
+                    listLoai.add(phim);
+                }
             }
-        }
-        return listLoai;
+            return listLoai;
+//        }
+
+
     }
-    
+    public List<Phim> getPhimDangChieuTheoRap(int idRap){
+        List<Phim> list = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            connection = UserDAO.getConnection();
+            String sql = "select phim.ID_PHIM, TEN_PHIM, THOI_LUONG, MO_TA, QUOC_GIA, ANH_PHIM, TRANG_THAI\n" +
+                    "from phim\n" +
+                    "left join suatchieu s on phim.ID_PHIM = s.ID_PHIM\n" +
+                    "inner join phongchieu p on s.ID_PHONGCHIEU = p.ID_PHONGCHIEU\n" +
+                    "where ID_RAP = ?\n" +
+                    "group by TEN_PHIM\n" +
+                    "order by ID_PHIM desc\n" +
+                    "\n";
+            pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, idRap);
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                Phim phim = new Phim();
+                int id = rs.getInt("ID_PHIM");
+                list.add(getPhimById(id));
+            }
+            List<Phim> listtmp = getPhimByLoai(2);
+            for(Phim p : listtmp){
+                list.add(p);
+            }
+            listtmp = getPhimByLoai(3);
+            for(Phim p : listtmp){
+                list.add(p);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(connection != null){
+                    connection.close();
+                }
+                if(pstm != null){
+                    pstm.close();
+                }
+                if(rs != null){
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        return null;
+    }
+
+
     
     public int getLastIDPhim(){
         Connection connection = null;

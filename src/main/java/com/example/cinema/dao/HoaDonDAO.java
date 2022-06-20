@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HoaDonDAO extends UserDAO{
+public class HoaDonDAO extends AbstractDAO{
 
 
     UserDAO userDAO = new UserDAO();

@@ -9,7 +9,7 @@ start();
 async function getAllGhe(callback){
     console.log("t");
 
-    let api = "http://localhost:8080/api/ghe?suat-chieu=" + idSuatChieu;
+    let api = "https://localhost:8443/api/ghe?suat-chieu=" + idSuatChieu;
     await fetch(api)
         .then(async function(response){
             return await response.json();
@@ -20,6 +20,7 @@ async function getAllGhe(callback){
 function getID(){
     let hung = document.querySelectorAll(".ghe");
     let result = new Array();
+    let lstIdGhe = new Array();
     let kq = document.querySelector(".kq");
 
     function xoa(arr,del){
@@ -40,16 +41,20 @@ function getID(){
                 if(e.classList.length > 1){
                     console.log("vvvv");
                     result.push(e.getAttribute("xa"));
-                    console.log(result)
+                    lstIdGhe.push(e.getAttribute("idGhe"));
+                    test(lstIdGhe)
                 }
                 else{
                     console.log("rrrr");
                     xoa(result,e.getAttribute("xa"));
-                    console.log(result);
+                    xoa(lstIdGhe,e.getAttribute("idGhe"));
+                    test(lstIdGhe)
                 }
             }
             result.sort();
             console.log("aaaaa",result);
+
+            console.log("bbbb",lstIdGhe);
             // console.log("bbbbb",result[0]);
             let s = "";
             for(let i = 0 ; i < result.length; i++){
@@ -65,8 +70,10 @@ function getID(){
 
 
     });
+
+    muaVe(result, lstIdGhe)
 }
-let arr = new Array();
+// let arr = new Array();
 function dataID(data){
     // console.log(data.value);
     IDCheck = data.value;
@@ -78,11 +85,11 @@ function rederGhe( ghes){
         // console.log(ghe.trangThai);
         if(ghe.trangThai == true){
             return`
-                <div class="ghe ${ghe.trangThai}" value = "${ghe.trangThai}"  xa = "${ghe.gheSo}" style="margin-top: 20px;"><div class="chinh"> ${ghe.gheSo}</div></div>
+                <div class="ghe ${ghe.trangThai}" idghe="${ghe.idGhe}" value = "${ghe.trangThai}"  xa = "${ghe.gheSo}" style="margin-top: 20px;"><div class="chinh"> ${ghe.gheSo}</div></div>
             `
         }
         return`
-            <div class="ghe" value = "${ghe.trangThai}"  xa = "${ghe.gheSo}" style="margin-top: 20px;"><div class="chinh"> ${ghe.gheSo}</div></div>
+            <div class="ghe" value = "${ghe.trangThai}" idghe="${ghe.idGhe}" xa = "${ghe.gheSo}" style="margin-top: 20px;"><div class="chinh"> ${ghe.gheSo}</div></div>
         `
     })
     listGhe.innerHTML = htmls.join('');
@@ -93,7 +100,7 @@ function rederGhe( ghes){
 
 async function loadPhim(callback){
 
-    let api = 'http://localhost:8080/api/suat-chieu/' + idSuatChieu
+    let api = 'https://localhost:8443/api/suat-chieu/' + idSuatChieu
     await fetch(api)
         .then(response => response.json())
         .then(callback)
@@ -169,4 +176,28 @@ function renderVePhim(data){
     </div>`
     console.log(html)
     phimMuaVe.innerHTML = html;
+    getDataMuaVeRap(data.ngayChieu, data.thoiGianBD, data.phongChieu.tenPhong)
+}
+function test(arr){
+    var btnMuaVe = document.querySelector('.btn-mua-ve')
+    if(arr.length > 0){
+        btnMuaVe.style.display = "block";
+    }
+    else{
+        btnMuaVe.style.display = "none";
+    }
+}
+
+function muaVe(arr1, arr2){
+    var btnMuaVe = document.querySelector('.btnMuaVe');
+    btnMuaVe.addEventListener('click', function (){
+        sessionStorage.setItem('lstGhe', arr1);
+        sessionStorage.setItem('lstIdGhe', arr2);
+
+    })
+}
+function getDataMuaVeRap(ngay, gio, phong) {
+    sessionStorage.setItem('ngay', ngay);
+    sessionStorage.setItem('gio', gio);
+    sessionStorage.setItem('phong', phong)
 }
