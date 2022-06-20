@@ -230,4 +230,48 @@ public class SuatChieuDAO extends AbstractDAO{
         return null;
     }
 
+    public List<SuatChieu> getSuatChieuByNgay(String ngay){
+        List<SuatChieu> list = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            connection = UserDAO.getConnection();
+            String sql = "select *\n" +
+                    "from suatchieu where NGAY_CHIEU = ? ";
+            pstm = connection.prepareStatement(sql);
+            pstm.setString(1, ngay);
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                SuatChieu suatChieu = new SuatChieu();
+                suatChieu.setIdSuatChieu(rs.getInt("ID_SUATCHIEU"));
+                suatChieu.setGiaVe(rs.getInt("GIA_VE"));
+                suatChieu.setNgayChieu(rs.getDate("NGAY_CHIEU"));
+                suatChieu.setThoiGianBD(rs.getTime("THOI_GIAN_BD"));
+                suatChieu.setPhim(phimDAO.getPhimById(rs.getInt("ID_PHIM")));
+                suatChieu.setPhongChieu(phongChieuDAO.getPhongChieuByID(rs.getInt("ID_PHONGCHIEU")));
+                list.add(suatChieu);
+            }
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(connection != null){
+                    connection.close();
+                }
+                if(pstm != null){
+                    pstm.close();
+                }
+                if(rs != null){
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }

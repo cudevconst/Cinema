@@ -47,18 +47,22 @@ public class SuatChieuAPI extends HttpServlet {
 
         Pattern pattern4 = Pattern.compile("api/suat-chieu/(\\d++)$");
         Matcher matcher4 = pattern4.matcher(request.getRequestURL());
-        if(request.getQueryString()!= null){
-            matcher3 = pattern3.matcher(request.getQueryString());
-        }
-        else{
-            matcher3 = pattern3.matcher("");
-        }
+
         if(matcher.find()){
 
-            if(matcher3.find()){
-                int id = Integer.parseInt(matcher3.group(1));
-                String date = matcher3.group(2);
-                out.println(gson.toJson(suatChieuDAO.getSuatChieuByPhimAndDate(id, date)));
+           if(request.getQueryString() != null){
+               String sid = request.getParameter("phim");
+
+               String ngay = request.getParameter("ngay");
+               if(sid == null){
+
+                   out.print(gson.toJson(suatChieuDAO.getSuatChieuByNgay(ngay)));
+               }
+               else{
+                   int id = Integer.parseInt(sid);
+                   out.println(gson.toJson(suatChieuDAO.getSuatChieuByPhimAndDate(id, ngay)));
+               }
+
             }
             else{
                 out.print(gson.toJson(suatChieuDAO.findAll()));

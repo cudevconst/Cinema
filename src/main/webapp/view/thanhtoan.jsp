@@ -1,20 +1,21 @@
-<%-- 
-    Document   : phimItem
-    Created on : May 22, 2022, 9:52:35 PM
-    Author     : cuong
+<%--
+  Created by IntelliJ IDEA.
+  User: cuong
+  Date: 6/20/2022
+  Time: 8:02 AM
+  To change this template use File | Settings | File Templates.
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/32.png" type="image/gif" sizes="16x16">
-    <title>Detail Cinema</title>
+    <title>Cinema</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="./img/32.png" type="image/gif" sizes="16x16">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,10 +23,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/home.css">
-    <link rel="stylesheet" href="static/css/detailCinema.css">
-    <link rel="stylesheet" href="static/css/lichchieu.css">
+    <link rel="stylesheet" href="static/css/thanhtoan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+<div class="popup-thanh-toan-thanh-cong hide">
+    <div class="cls-btn"><i class="fa-solid fa-xmark"></i></div>
+    <h2>Thanh Toán Thành công</h2>
+    <i class="fa-solid fa-circle-check" style="font-size: 30px; color: green"></i>
+</div>
 <div class="nav-bar">
     <a href="/trang-chu">
         <div style="display: flex; align-items: center; justify-content: center;">
@@ -33,8 +39,6 @@
             <div class="text-logo">META</div>
         </div>
     </a>
-    <img src="">
-
     <div class="select-navBar">
         <select name="cinemas" id="cinemas">
 
@@ -51,22 +55,14 @@
         <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>
     </a>
 </div>
-<!-- <div class="price"></div> -->
-<div class="detail-cinema">
-</div>
-<div class="lop-phu"></div>
-<div class="bang-chon-gio">
-    <div class="ten-phim">
-
-    </div>
-    <div class="gio-chieu-menu">
-
-    </div>
-    <div class="gio-chieu-list">
-
-    </div>
+<h2 class="thong-tin-mua-ve">Thông tin mua vé xem phim</h2>
+<div class="container">
 
 </div>
+<div class="btnThanhToan">
+    <button class = "btnMuaVe">THANH TOÁN</button>
+</div>
+
 <div class="content-7">
     <div class="footer">
         <div class="footer-1">
@@ -101,9 +97,7 @@
     </div>
 
 </div>
-<script src="static/js/app.js"></script>
-<script src="static/js/detailCinema.js"></script>
+<script src="static/js/thanhtoan.js"></script>
 <script src="static/js/trangchu.js" type="module"></script>
-
 </body>
 </html>

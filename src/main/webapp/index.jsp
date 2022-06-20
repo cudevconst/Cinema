@@ -27,25 +27,22 @@
 </head>
 <body>
 <div class="nav-bar">
-    <a href="./index.html">
+    <a href="/trang-chu">
         <div style="display: flex; align-items: center; justify-content: center;">
             <div class="logo-navBar"></div>
             <div class="text-logo">META</div>
         </div>
     </a>
     <div class="select-navBar">
-        <select id="cars">
-<%--            <option value="volvo">META BẮC GIANG</option>--%>
-<%--            <option value="saab">META HÀ NỘI</option>--%>
-<%--            <option value="opel">META THÁI NGUYÊN</option>--%>
-<%--            <option value="audi">META BẮC NINH</option>--%>
+        <select id="cinemas" name="cinemas">
+
         </select>
     </div>
     <div class="menu-navBar">
         <ul>
-            <a href="./lich_chieu_phim.html"><li>LỊCH CHIẾU PHIM THEO RẠP</li></a>
-            <a href="./thong_tin_rap.html"><li>RẠP</li></a>
-            <a href="./price.html"><li>GIÁ VÉ</li></a>
+            <a href="/thong-tin-rap"><li>RẠP</li></a>
+            <a href="/gia-ve"><li>GIÁ VÉ</li></a>
+            <a href="/lich-su"><li>LỊCH SỬ</li></a>
         </ul>
     </div>
     <!-- <a href="./login.html">
@@ -97,8 +94,8 @@
 
 <script src="static/js/app.js"></script>
 <script src="static/js/data.js"></script>
-<script src="static/js/trangchu.js"></script>
-<script src="static/js/header.js"></script>
+<%--<script src="static/js/trangchu.js"></script>--%>
+<%--<script src="static/js/header.js"></script>--%>
 </body>
 </html>
 

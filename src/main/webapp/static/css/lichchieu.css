@@ -452,3 +452,10 @@ html body{
 .show{
     display: block;
 }
+
+#search{
+    color: black;
+    height: 40px;
+    width: 360px;
+    padding: 0 20px;
+}

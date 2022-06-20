@@ -1,4 +1,5 @@
 
+
 async function start(){
     await getAllCinema(rederCinema);
     menuCinema();
@@ -7,8 +8,10 @@ async function start(){
     moTaiKhoan();
 }
 start();
+
 async function getAllCinema(callback){
-    let api = "http://localhost:8080/api/phim";
+    var idRap = sessionStorage.getItem("idRap");
+    let api = "https://localhost:8443/api/phim?idRap=" + idRap;
     await fetch(api)
         .then(await function (reponse){
             return reponse.json();
@@ -19,7 +22,7 @@ async function getAllCinema(callback){
 // hàm gọi api ngày chiếu theo phim
 async function getAllPhimNgayChieu(callback,phim,ngay){
     // http://localhost:8080/api/suat-chieu?phim=1&ngay=2022-05-23
-    let api = `http://localhost:8080/api/suat-chieu?phim=${phim}&ngay=${ngay}`;
+    let api = `https://localhost:8443/api/suat-chieu?phim=${phim}&ngay=${ngay}`;
     await fetch(api)
         .then(await function (reponse){
             return reponse.json();
@@ -364,7 +367,7 @@ function rederCinema(cinemas){
     function validateYMD(date){
 
     }
-    // test();
+
 
 }
 
@@ -380,3 +383,68 @@ function chuanHoaNgay(){
     }
     return arr;
 }
+
+
+start1();
+
+async function rap(callback){
+    var api = 'https://localhost:8443/api/rap';
+    await fetch(api)
+        .then(response => response.json())
+        .then(callback)
+}
+function renderRap(data){
+    var cinemas = document.getElementById('cinemas')
+    let select = true
+    var html = data.map(e => {
+        if(select){
+            select = false
+            return `
+            <option idrap="${e.idRap}" class="first-cinema" value="${e.tenRap}">${e.tenRap}</option>`
+        }
+        else{
+            return `
+        <option idrap="${e.idRap}" value="${e.tenRap}">${e.tenRap}</option>`
+        }
+    })
+    cinemas.innerHTML = html.join(' ')
+}
+async function start1(){
+    await rap(renderRap)
+    var cinemas = document.getElementById('cinemas')
+
+    let firstCinema = cinemas.options[cinemas.selectedIndex].getAttribute('idrap');
+    // cinemas.addEventListener("change", function (){
+    //     console.log(cinemas.value)
+    // })
+    changeCinema(cinemas)
+}
+
+function changeCinema(cinemas){
+    let firstCinema = cinemas.options[cinemas.selectedIndex].getAttribute('idrap');
+    let nameCinema = cinemas.options[cinemas.selectedIndex].text;
+
+    if(!sessionStorage.getItem("idRap")){
+        sessionStorage.setItem("idRap", firstCinema)
+        sessionStorage.setItem("tenRap", nameCinema)
+    }
+    cinemas.addEventListener("change", function(){
+        firstCinema = cinemas.options[cinemas.selectedIndex].getAttribute('idrap')
+        nameCinema = cinemas.options[cinemas.selectedIndex].text;
+
+        sessionStorage.setItem('idRap', firstCinema)
+        sessionStorage.setItem("tenRap", nameCinema)
+        start();
+    })
+
+    cinemas.options[sessionStorage.getItem('idRap') - 1].setAttribute("selected", "selected")
+}
+
+
+
+
+
+
+
+
+

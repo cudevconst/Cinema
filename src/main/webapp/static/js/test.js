@@ -26,10 +26,11 @@ nvc.addEventListener('submit', (e) => {
     formData.append('i11', input1.value)
     formData.append('i21', input2.value)
     formData.append('file', input3.files[0])
-    fetch('http://localhost:8080/api/phim/insert', {
-      method: 'POST',
-      body: formData
-    })
+    // fetch('http://localhost:8080/api/phim/insert', {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    console.log(formData)
 
 })
     

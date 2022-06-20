@@ -80,6 +80,22 @@ public class UserDAO extends AbstractDAO{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        finally {
+            try {
+                if(connection!= null){
+                    connection.close();
+                }
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
         return null;
     }
     public void insert(User user){
