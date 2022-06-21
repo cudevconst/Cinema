@@ -6,7 +6,9 @@ import com.example.cinema.model.User;
 public class UserDTO {
 
     public UserMapper chuyenUser(User user){
+
         UserMapper userMapper = new UserMapper();
+        userMapper.setIdUser(user.getIdUser());
         userMapper.setUserName(user.getUserName());
         userMapper.setHoTen(user.getHoTen());
         userMapper.setEmail(user.getEmail());

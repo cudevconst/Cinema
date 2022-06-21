@@ -12,11 +12,11 @@ async function getSuatChieu(callback){
         .then(response => response.json())
         .then(callback)
 }
-
+var giaVe = 0;
 function renderSuatChieu(data){
-
+    giaVe = data.giaVe;
     let lstItemVe = document.querySelector('.container')
-    var html = `<table>
+    let html = `<table>
         <tr>
             <th>Phim</th>
             <th>Rạp</th>
@@ -34,8 +34,8 @@ function renderSuatChieu(data){
                 <td>${dateNow()}</td>
                 <td>${data.ngayChieu}, ${data.thoiGianBD}</td>
                 <td>${sessionStorage.getItem('lstGhe')}</td>
-                <td>${data.giaVe}</td>
-                <td>${tongTien(sessionStorage.getItem('lstGhe'), data.giaVe)}</td>
+                <td>${format(data.giaVe)}</td>
+                <td>${format(tongTien(sessionStorage.getItem('lstGhe'), data.giaVe))}</td>
             </tr>
 </table>`;
     lstItemVe.innerHTML = html;
@@ -57,8 +57,10 @@ function tongTien(lst, giave){
 
 async function sendData(url){
     const formData = new FormData();
-    formData.append("soLuong", 14785);
-    formData.append("tongTien", 14785);
+    let soLuong = getListGhe(sessionStorage.getItem('lstIdGhe')).length
+    let tongTien = soLuong * giaVe;
+    formData.append("soLuong", soLuong);
+    formData.append("tongTien", tongTien);
     formData.append("idUser", 1);
     await fetch(url, {
         method: 'POST',
@@ -121,6 +123,20 @@ function handleThanhToan(){
     })
 }
 
+function format(n) {
+    n = n + ""
+    let s = ""
+    let arr = new Array();
+    n = n.split('').reverse().join('');
+    arr = (n.match(/.{1,3}/g))
+    for(let i = arr.length - 1; i >0; --i){
+        arr[i] = arr[i].split('').reverse().join('');
+        s += arr[i] + "."
+    }
+    s+= arr[0] + "đ"
+    return s;
+
+}
 
 
 

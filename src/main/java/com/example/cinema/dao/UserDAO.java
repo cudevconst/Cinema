@@ -5,6 +5,8 @@
  */
 package com.example.cinema.dao;
 
+import com.example.cinema.dto.UserDTO;
+import com.example.cinema.mapper.UserMapper;
 import com.example.cinema.model.User;
 
 import java.sql.Connection;
@@ -18,6 +20,7 @@ import java.sql.ResultSet;
  */
 public class UserDAO extends AbstractDAO{
 
+    private UserDTO userDTO = new UserDTO();
     public UserDAO() {
     }
 
@@ -52,7 +55,7 @@ public class UserDAO extends AbstractDAO{
     
 
     }
-    public User getUserById(int id){
+    public UserMapper getUserById(int id){
         User user = new User();
         
         Connection connection = null;
@@ -74,7 +77,7 @@ public class UserDAO extends AbstractDAO{
                 user.setSdt(rs.getString("SDT"));
                 user.setEmail(rs.getString("EMAIL"));
                 user.setQuyen(rs.getString("QUYEN"));
-                return user;
+                return userDTO.chuyenUser(user);
             }
             
         } catch (Exception e) {
@@ -120,8 +123,128 @@ public class UserDAO extends AbstractDAO{
             
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(connection!= null){
+                    connection.close();
+                }
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
        
+    }
+    public int checkExitsPasswordByUser(int idUser, String passWord){
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            connection = UserDAO.getConnection();
+            String sql = "select exists(select * from user where ID_USER = ? and PASSWORD = ?)";
+            pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, idUser);
+            pstm.setString(2, passWord);
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(connection!= null){
+                    connection.close();
+                }
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return 0;
+    }
+    public void updatePassWord(int idUser, String passWord){
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            connection = UserDAO.getConnection();
+            String sql = "UPDATE user SET PASSWORD = ? where ID_USER = ?";
+            pstm = connection.prepareStatement(sql);
+            pstm.setString(1, passWord);
+            pstm.setInt(2, idUser);
+            pstm.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(connection!= null){
+                    connection.close();
+                }
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public void update(UserMapper user){
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            connection = UserDAO.getConnection();
+            String sql = "UPDATE `user` SET `HO_TEN`=?,`DIA_CHI`=?,`SDT`=?,`EMAIL`=? WHERE ID_USER = ?";
+            pstm = connection.prepareStatement(sql);
+            pstm.setString(1, user.getHoTen());
+            pstm.setString(2, user.getDiaChi());
+            pstm.setString(3, user.getSdt());
+            pstm.setString(4, user.getEmail());
+            pstm.setInt(5, user.getIdUser());
+
+            pstm.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(connection!= null){
+                    connection.close();
+                }
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
     }
     public boolean checkExistsUser(String userName){
         Connection connection = null;

@@ -1,5 +1,7 @@
 package com.example.cinema.model;
 
+import com.example.cinema.mapper.UserMapper;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -8,19 +10,19 @@ public class HoaDon {
     private Date ngayMua;
     private int soLuong;
     private int tongTien;
-    private User user;
+    private UserMapper user;
     private List<Ve> ves;
     public HoaDon() {
     }
 
-    public HoaDon(int idHoaDon, Date ngayMua, int soLuong, int tongTien, User user) {
+    public HoaDon(int idHoaDon, Date ngayMua, int soLuong, int tongTien, UserMapper user) {
         this.idHoaDon = idHoaDon;
         this.ngayMua = ngayMua;
         this.soLuong = soLuong;
         this.tongTien = tongTien;
         this.user = user;
     }
-    public HoaDon(Date ngayMua, int soLuong, int tongTien, User user) {
+    public HoaDon(Date ngayMua, int soLuong, int tongTien, UserMapper user) {
         this.ngayMua = ngayMua;
         this.soLuong = soLuong;
         this.tongTien = tongTien;
@@ -59,11 +61,11 @@ public class HoaDon {
         this.tongTien = tongTien;
     }
 
-    public User getUser() {
+    public UserMapper getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserMapper user) {
         this.user = user;
     }
 }
