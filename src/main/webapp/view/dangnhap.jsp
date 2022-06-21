@@ -33,7 +33,7 @@
             <c:if test="${not empty dangky}">
                 <span class="chu-xanh">Đăng ký tài khoản thành công!</span>
             </c:if>
-            <form action="/dang-nhap" method="post" id="frm-dang-nhap">
+            <form action="/dang-nhap" method="post" id="frm-dang-nhap" onsubmit="return false;">
                 <span class="block">Tên tài khoản</span>
                 <input type="text" name="username" id="username" placeholder="Tên tài khoản" class="block">
                 <span class="block">Mật khẩu</span>
@@ -85,5 +85,6 @@
 </div>
 <script src="../static/js/dungchung.js"></script>
 <script src="../static/js/dangnhap.js"></script>
+<script src="../static/js/trangchu.js"></script>
 </body>
 </html>

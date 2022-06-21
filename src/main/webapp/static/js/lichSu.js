@@ -1,7 +1,7 @@
 
 
-
-var api = "https://localhost:8443/api/lich-su?id-user=1"
+let idUser = sessionStorage.getItem("idUser")
+var api = "https://localhost:8443/api/lich-su?id-user=" + idUser;
 
 start();
 async function start(){

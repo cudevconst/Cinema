@@ -4,6 +4,7 @@
     Author     : cuong
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/32.png" type="image/gif" sizes="16x16">
     <title>Detail Cinema</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,36 +21,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/css/home.css">
-    <link rel="stylesheet" href="static/css/detailCinema.css">
-    <link rel="stylesheet" href="static/css/lichchieu.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/detailCinema.css">
+    <link rel="stylesheet" href="../static/css/lichchieu.css">
 </head>
 <body>
-<div class="nav-bar">
-    <a href="/trang-chu">
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <div class="logo-navBar"></div>
-            <div class="text-logo">META</div>
-        </div>
-    </a>
-    <img src="">
+<%--<div class="nav-bar">--%>
+<%--    <a href="/trang-chu">--%>
+<%--        <div style="display: flex; align-items: center; justify-content: center;">--%>
+<%--            <div class="logo-navBar"></div>--%>
+<%--            <div class="text-logo">META</div>--%>
+<%--        </div>--%>
+<%--    </a>--%>
+<%--    <img src="">--%>
 
-    <div class="select-navBar">
-        <select name="cinemas" id="cinemas">
+<%--    <div class="select-navBar">--%>
+<%--        <select name="cinemas" id="cinemas">--%>
 
-        </select>
-    </div>
-    <div class="menu-navBar">
-        <ul>
-            <a href="/thong-tin-rap"><li>RẠP</li></a>
-            <a href="/gia-ve"><li>GIÁ VÉ</li></a>
-            <a href="/lich-su"><li>LỊCH SỬ</li></a>
-        </ul>
-    </div>
-    <a href="./login.html">
-        <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>
-    </a>
-</div>
+<%--        </select>--%>
+<%--    </div>--%>
+<%--    <div class="menu-navBar">--%>
+<%--        <ul>--%>
+<%--            <a href="/thong-tin-rap"><li>RẠP</li></a>--%>
+<%--            <a href="/gia-ve"><li>GIÁ VÉ</li></a>--%>
+<%--            <a href="/lich-su"><li>LỊCH SỬ</li></a>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--    <a href="./login.html">--%>
+<%--        <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>--%>
+<%--    </a>--%>
+<%--</div>--%>
+<%@ include file="manh-navbar.jsp"%>
 <!-- <div class="price"></div> -->
 <div class="detail-cinema">
 </div>
@@ -101,9 +102,9 @@
     </div>
 
 </div>
-<script src="static/js/app.js"></script>
-<script src="static/js/detailCinema.js"></script>
-<script src="static/js/trangchu.js" type="module"></script>
+<script src="../static/js/app.js"></script>
+<script src="../static/js/detailCinema.js"></script>
+<script src="../static/js/trangchu.js" type="module"></script>
 
 </body>
 </html>

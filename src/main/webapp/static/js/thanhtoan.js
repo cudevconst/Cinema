@@ -59,9 +59,10 @@ async function sendData(url){
     const formData = new FormData();
     let soLuong = getListGhe(sessionStorage.getItem('lstIdGhe')).length
     let tongTien = soLuong * giaVe;
+    let idUser = sessionStorage.setItem("idUser");
     formData.append("soLuong", soLuong);
     formData.append("tongTien", tongTien);
-    formData.append("idUser", 1);
+    formData.append("idUser", idUser);
     await fetch(url, {
         method: 'POST',
         body: formData

@@ -5,51 +5,29 @@
   Time: 10:19 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./img/32.png" type="image/gif" sizes="16x16">
   <title>Price</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./Css/home.css">
+  <link rel="stylesheet" href="../static/css/home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="static/css/home.css">
-  <link rel="stylesheet" href="static/css/giaVe.css">
+  <link rel="stylesheet" href="../static/css/giaVe.css">
 </head>
 <body>
-<div class="nav-bar">
-  <a href="/trang-chu">
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <div class="logo-navBar"></div>
-      <div class="text-logo">META</div>
-    </div>
-  </a>
-  <div class="select-navBar">
-    <select name="cinemas" id="cinemas">
-
-    </select>
-  </div>
-  <div class="menu-navBar">
-    <ul>
-      <a href="/thong-tin-rap"><li>RẠP</li></a>
-      <a href="/gia-ve"><li>GIÁ VÉ</li></a>
-      <a href="/lich-su"><li>LỊCH SỬ</li></a>
-    </ul>
-  </div>
-  <a href="./login.html">
-    <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>
-  </a>
-</div>
+<%@ include file="manh-navbar.jsp"%>
 <div class="price"></div>
 <div class="content-7">
   <div class="footer">
