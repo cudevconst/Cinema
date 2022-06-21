@@ -1,5 +1,3 @@
-
-sessionStorage.setItem('idUser', 1)
 async function start(){
     await getAllCinema(rederCinema);
     menuCinema();
