@@ -1,13 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : May 12, 2022, 8:11:43 PM
-    Author     : cuong
-*/
-
 *{
     padding:0;
     margin: 0;
@@ -18,11 +8,14 @@ a{
 }
 .body{
     width: 800px;
-    height: 800px;
     margin: 0 auto;
+    margin-top: 50px;
     /* background-color: red; */
 }
-
+.login{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-bottom: 50px;
+}
 .dn_dk{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -40,12 +33,12 @@ button{
 }
 .dn_dk button{
     width: 100%;
-    
+
     border: none;
     border-bottom: 2px solid grey;
     height: 50px;
     font-size: 20px;
-    
+
 }
 .form{
     width: 600px;
@@ -53,7 +46,7 @@ button{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    
+
 }
 .block{
     display: block;
@@ -73,7 +66,7 @@ button{
 .form a{
     color: gray;
     font-size: 20px;
-    
+
 }
 
 .form button{
@@ -95,16 +88,16 @@ button{
     grid-template-columns: repeat(2, 1fr);
     width: 80%;
     margin: 0 auto;
-   
+    margin-top: 50px;
 }
 .info{
     width: 90%;
     margin-top: 10px;
     /* display: inline-block; */
-    
+
 }
 .info span{
-   font-size: 20px;
+    font-size: 20px;
 }
 .info input{
     width: 100%;
@@ -124,13 +117,14 @@ button{
     font-size: 16px;
     margin-top: 50px;
 }
-.thong-bao{
-    background-color: transparent;
-    border: 0px solid;
+
+.quenmk-hanhdong{
+    display: flex;
+    justify-content: space-around;
+}
+.quenmk-hanhdong a{
+    width: 30%;
+}
+.quenmk-hanhdong button{
     width: 100%;
-    height: 50px;
-    boder: none;
-    text-align: center;
-    font-size: 20px;
-    color: red;
 }

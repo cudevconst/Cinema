@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="static/css/lichchieu.css">
+    <link rel="stylesheet" href="../static/css/lichchieu.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -26,36 +26,37 @@
     </style>
 </head>
 <body>
-<div class="nav-bar">
-    <a href="/trang-chu">
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <div class="logo-navBar"></div>
-            <div class="text-logo">META</div>
-        </div>
-    </a>
-    <div class="select-navBar">
-        <select id="cinemas" name="cinemas">
+<%--<div class="nav-bar">--%>
+<%--    <a href="/trang-chu">--%>
+<%--        <div style="display: flex; align-items: center; justify-content: center;">--%>
+<%--            <div class="logo-navBar"></div>--%>
+<%--            <div class="text-logo">META</div>--%>
+<%--        </div>--%>
+<%--    </a>--%>
+<%--    <div class="select-navBar">--%>
+<%--        <select id="cinemas" name="cinemas">--%>
 
-        </select>
-    </div>
-    <div class="menu-navBar">
-        <ul>
-            <a href="/thong-tin-rap"><li>RẠP</li></a>
-            <a href="/gia-ve"><li>GIÁ VÉ</li></a>
-            <a href="/lich-su"><li>LỊCH SỬ</li></a>
-        </ul>
-    </div>
-    <!-- <a href="./login.html">
-        <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>
-    </a> -->
-    <div class="xin-chao">
-        <h3> Xin chào Hưng</h3>
-    </div>
-    <div class="popup-taikhoan">
-        <div class="thong-tin">Thông tin tài khoản</div>
-        <div class="dang-xuat">Đăng xuất</div>
-    </div>
-</div>
+<%--        </select>--%>
+<%--    </div>--%>
+<%--    <div class="menu-navBar">--%>
+<%--        <ul>--%>
+<%--            <a href="/thong-tin-rap"><li>RẠP</li></a>--%>
+<%--            <a href="/gia-ve"><li>GIÁ VÉ</li></a>--%>
+<%--            <a href="/lich-su"><li>LỊCH SỬ</li></a>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--    <!-- <a href="./login.html">--%>
+<%--        <div class="signIn-navBar"><i class="fa-solid fa-user"></i> Login</div>--%>
+<%--    </a> -->--%>
+<%--    <div class="xin-chao">--%>
+<%--        <h3> Xin chào Hưng</h3>--%>
+<%--    </div>--%>
+<%--    <div class="popup-taikhoan">--%>
+<%--        <div class="thong-tin">Thông tin tài khoản</div>--%>
+<%--        <div class="dang-xuat">Đăng xuất</div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%@ include file="view/manh-navbar.jsp"%>
 <div class="lop-phu"></div>
 <div class="bang-chon-gio">
     <div class="ten-phim">
@@ -92,8 +93,8 @@
     <div class="cinema-list"></div>
 </div>
 
-<script src="static/js/app.js"></script>
-<script src="static/js/data.js"></script>
+<script src="../static/js/app.js"></script>
+<script src="../static/js/data.js"></script>
 <%--<script src="static/js/trangchu.js"></script>--%>
 <%--<script src="static/js/header.js"></script>--%>
 </body>

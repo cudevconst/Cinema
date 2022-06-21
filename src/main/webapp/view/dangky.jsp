@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Đăng ký</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="../static/img/32.png" type="image/gif" sizes="16x16">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,32 +21,62 @@
     <link rel="stylesheet" href="../static/css/home.css">
 </head>
 <body>
+
 <%@ include file="manh-navbar.jsp"%>
+
 <div class="body">
     <div class="login">
         <div class="dn_dk">
-            <button class="active dn">ĐĂNG NHẬP</button>
-            <a href="/dang-ky"><button class="dk">ĐĂNG KÝ</button></a>
+            <a href="/dang-nhap"><button class="dn">ĐĂNG NHẬP</button></a>
+            <button class="active dk">ĐĂNG KÝ</button>
         </div>
 
-        <div class="login_form form">
-            <c:if test="${not empty dangky}">
-                <span class="chu-xanh">Đăng ký tài khoản thành công!</span>
-            </c:if>
-            <form action="/dang-nhap" method="post" id="frm-dang-nhap">
-                <span class="block">Tên tài khoản</span>
-                <input type="text" name="username" id="username" placeholder="Tên tài khoản" class="block">
-                <span class="block">Mật khẩu</span>
-                <input type="password" name="password" id="password" placeholder="Mật khẩu" class="block">
-                <c:if test="${not empty param}">
-                    <span class="chu-do">Tên tài khoản hoặc mật khẩu không chính xác!</span><br>
-                </c:if>
-                <div style="display: flex; justify-content: flex-end">
-                    <a href="/quen-mat-khau">Quên mật khẩu?</a>
-                </div>
-                <button onclick="dangNhap()" style="display: block">Đăng nhập</button>
-            </form>
-        </div>
+        <form class="login_form form1" method="post" id="form-dangky" onsubmit="return false">
+            <div class="info">
+                    <span>
+                            Tên tài khoản
+                    </span>
+                <input type="text" name="username" id="username" placeholder="Tên tài khoản" minlength="6" maxlength="20"
+                        oninput="kiemTraHopLeInput(this)">
+            </div>
+            <div class="info">
+                    <span>
+                            Email
+                    </span>
+                <input type="text" name="email" id="email" placeholder="Email"
+                       oninput="kiemTraHopLeEmail(this)">
+            </div>
+            <div class="info">
+                    <span>
+                            Họ tên
+                    </span>
+                <input type="text" name="hovaten" id="hovaten" placeholder="Họ tên" minlength="2" maxlength="20"
+                       oninput="kiemTraHopLeInput(this)">
+            </div>
+            <div class="info">
+                    <span>
+                            Số điện thoại
+                    </span>
+                <input type="tel" name="sdt" id="sdt" placeholder="Số điện thoại" minlength="10" maxlength="10"
+                       oninput="kiemTraHopLeInput(this)">
+            </div>
+            <div class="info">
+                    <span>
+                            Mật khẩu
+                    </span>
+                <input type="password" name="password" id="password" placeholder="Mật khẩu" minlength="6" maxlength="20"
+                       oninput="kiemTraHopLeInput(this)">
+            </div>
+            <div class="info">
+                    <span>
+                            Xác nhận lại mật khẩu
+                    </span>
+                <input type="password" name="re-password" id="re-password" placeholder="Xác nhận lại mật khẩu"
+                       oninput="kiemTraTrungMatKhau(this)">
+            </div>
+            <span class="chu-do phan-hoi" hidden></span>
+            <button onclick="dangKyTaiKhoan()">Đăng ký</button>
+        </form>
     </div>
 </div>
 <div class="content-7">
@@ -84,6 +114,6 @@
 
 </div>
 <script src="../static/js/dungchung.js"></script>
-<script src="../static/js/dangnhap.js"></script>
+<script src="../static/js/dangky.js"></script>
 </body>
 </html>
